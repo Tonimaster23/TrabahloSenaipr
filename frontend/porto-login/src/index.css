@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #24c3ce;
 }
 
 code {
@@ -17,11 +18,11 @@ body {
 }
 
 .login-container {
-  width: 300px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  width: 360px;
+  margin: 220px auto;
+  padding: 60px;
+  border: 1px solid #000000;
+  border-radius: 20px;
 }
 
 h2 {
@@ -50,7 +51,7 @@ button {
 }
 
 button:hover {
-  background-color: cyan;
+  background-color: rgba(0, 255, 255, 0.172);
 }
 
 ul {

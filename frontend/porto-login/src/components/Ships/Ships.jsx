@@ -43,7 +43,10 @@ const Ships = () => {
       setError('Erro ao cadastrar navio');
     }
   };
+<header className='ships-head'>
+  <h1>MilkSpace</h1>
 
+</header>
   return (
     <div className="ships-container">
       <h2>Lista de Navios</h2>
