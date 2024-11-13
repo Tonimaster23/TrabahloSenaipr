@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 import './Ships.css';
 
 const Ships = () => {
@@ -48,6 +50,9 @@ const Ships = () => {
 
 </header>
   return (
+    <>{/*Imoortante pois sem a div vazia o codigo não funcionará, ela é precisa para ler as outras div e parametros */}
+    {/* Adiciona o Header */}
+    <Header />
     <div className="ships-container">
       <h2>Lista de Navios</h2>
       <button className="logout-button" onClick={() => navigate('/')}>Logout</button>
@@ -95,6 +100,9 @@ const Ships = () => {
         )}
       </ul>
     </div>
+    {/* Adiciona o Footer */}
+    <Footer />
+    </>
   );
 };
 

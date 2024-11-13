@@ -1,18 +1,29 @@
-Ships.css
-.login-container, .ships-container {
+/* Container geral para login e lista de navios */
+.ships-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   padding: 20px;
+  height: 74.6vh; /*Serve para Aumentar o tamanho do bloco para baixo assim colocando o site no tamanho ideal*/
+  background-color: aliceblue;
 }
-
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  padding: 20px;
+  height: 30h; /*Serve para Aumentar o tamanho do bloco para baixo assim colocando o site no tamanho ideal*/
+  background-color: aliceblue;
+}
+  /* Formulário de login e de adicionar navio */
 .login-form, .add-ship-form {
   background-color: #F2F2F2;
   padding: 30px;
   border-radius: 8px;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 480px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-top: 100px;
 }
 
 .login-form h2, .ships-container h2 {
@@ -23,20 +34,29 @@ Ships.css
   margin: 15px 0;
 }
 
+/* Botões: login, adicionar navio, logout, editar e deletar */
 .login-button, .add-ship-button, .logout-button, .edit-button, .delete-button {
-  background-color: #c2c2c2;
+  background-color: #00796B;
   color: white;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
+  transition: background-color 0.3s ease;
 }
 
+.login-button:hover, .add-ship-button:hover, .logout-button:hover, .edit-button:hover, .delete-button:hover {
+  background-color: #005f56;
+}
+
+/* Lista de navios e cartões individuais */
 .ships-list {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  justify-content: center;
+  padding-top: 20px;
 }
 
 .ship-card {
@@ -52,4 +72,129 @@ Ships.css
   width: 100%;
   border-radius: 4px;
   margin-bottom: 10px;
+}
+
+/* Estilos para o cabeçalho */
+.header-container {
+  position: relative;
+  width: 100%;
+  height: 133px;
+  background-color: #01E6FF;
+}
+
+.header-background {
+  position: absolute;
+  width: 100%;
+  height: 109px;
+  top: 0;
+  left: 0;
+  background-color: #01E6FF;
+}
+
+.header-icon {
+  position: absolute;
+  width: 56px;
+  height: 48px;
+  background-color: black;
+}
+
+.icon1 {
+  top: 61px;
+  right: 20px;
+}
+
+.icon2 {
+  top: 59px;
+  right: 100px;
+}
+
+.icon3 {
+  top: 57px;
+  right: 180px;
+  background-color: #09244B;
+}
+
+.header-title {
+  position: absolute;
+  left: 20px;
+  top: 35px;
+  color: white;
+  font-size: 64px;
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* Estilos para o footer */
+.footer-container {
+  width: 100%;
+  height: 109px;
+  background-color: #01E6FF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.footer-contact {
+  color: black;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.footer-email {
+  font-size: 14px;
+  color: black;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* Área de ícones no footer */
+.footer-icons {
+  display: flex;
+  align-items: center;
+}
+
+.footer-icon {
+  width: 38px;
+  height: 38px;
+  margin: 0 5px;
+  background: rgba(255, 255, 255, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.footer-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Estilos adicionais para cada ícone no footer */
+.footer-icon-blue {
+  background: linear-gradient(135deg, #2489BE 0%, #0575B3 100%);
+}
+
+.footer-icon-green {
+  background: linear-gradient(0deg, #20B038 0%, #60D66A 100%);
+}
+
+.footer-icon-instagram {
+  background: #C13584;
+  position: relative;
+}
+
+.footer-icon-instagram::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  top: 5px;
+  left: 5px;
 }
