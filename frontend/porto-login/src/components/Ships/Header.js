@@ -1,15 +1,15 @@
-// Header.js
 import React from 'react';
-import './Ships.css';
+import './Ships.css'; // Certifique-se de que o arquivo Ships.css contém os estilos necessários
 
 const Header = () => {
   return (
     <div className="header-container">
-      <div className="header-background"></div>
-      <div className="header-icon icon1"></div>
-      <div className="header-icon icon2"></div>
-      <div className="header-icon icon3"></div>
       <div className="header-title">Milkspace</div>
+      <div className="header-icons">
+        <div className="header-icon icon-ship"></div>
+        <div className="header-icon icon-phone"></div>
+        <div className="header-icon icon-home"></div>
+      </div>
     </div>
   );
 };

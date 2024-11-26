@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../Ships/Header';
+import Footer from '../Ships/Footer';
 import './Ships.css';
 
 const Ships = () => {
@@ -45,63 +45,90 @@ const Ships = () => {
       setError('Erro ao cadastrar navio');
     }
   };
-<header className='ships-head'>
-  <h1>MilkSpace</h1>
 
-</header>
   return (
-    <>{/*Imoortante pois sem a div vazia o codigo não funcionará, ela é precisa para ler as outras div e parametros */}
-    {/* Adiciona o Header */}
-    <Header />
-    <div className="ships-container">
-      <h2>Lista de Navios</h2>
-      <button className="logout-button" onClick={() => navigate('/')}>Logout</button>
+    <>
+      <Header />
+      <div className="ships-container">
+        <h2 className="ships-title">Lista de Navios</h2>
+        <button className="logout-button" onClick={() => navigate('/')}>
+          Logout
+        </button>
 
-      <button className="add-ship-button" onClick={() => setShowForm(!showForm)}>
-        {showForm ? 'Cancelar Cadastro' : 'Cadastrar Navio'}
-      </button>
+        <button
+          className="add-ship-button"
+          onClick={() => setShowForm(!showForm)}
+        >
+          {showForm ? 'Cancelar Cadastro' : 'Cadastrar Navio'}
+        </button>
 
-      {showForm && (
-        <form className="add-ship-form" onSubmit={handleAddShip}>
-          <div>
-            <label>Nome do Navio</label>
-            <input
-              type="text"
-              value={newShip.name}
-              onChange={(e) => setNewShip({ ...newShip, name: e.target.value })}
-              required
-            />
-          </div>
-          <div>
-            <label>Tipo do Navio</label>
-            <input
-              type="text"
-              value={newShip.type}
-              onChange={(e) => setNewShip({ ...newShip, type: e.target.value })}
-              required
-            />
-          </div>
-          <button type="submit" className="login-button">Cadastrar</button>
-        </form>
-      )}
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      <ul className="ships-list">
-        {ships.length > 0 ? (
-          ships.map((ship) => (
-            <li key={ship.id} className="ship-card">
-              <img src={`https://portosma.com.br/wp-content/uploads/2023/03/TRIPPLE-2.jpg`} alt={ship.name} />
-              <p>{ship.name} - {ship.type}</p>
-            </li>
-          ))
-        ) : (
-          <p>Carregando navios...</p>
+        {showForm && (
+          <form className="add-ship-form" onSubmit={handleAddShip}>
+            <div>
+              <label>Nome do Navio</label>
+              <input
+                type="text"
+                value={newShip.name}
+                onChange={(e) =>
+                  setNewShip({ ...newShip, name: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div>
+              <label>Tipo do Navio</label>
+              <input
+                type="text"
+                value={newShip.type}
+                onChange={(e) =>
+                  setNewShip({ ...newShip, type: e.target.value })
+                }
+                required
+              />
+            </div>
+            <button type="submit" className="login-button">
+              Cadastrar
+            </button>
+          </form>
         )}
-      </ul>
-    </div>
-    {/* Adiciona o Footer */}
-    <Footer />
+
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+
+        <ul className="ships-grid">
+  {ships.length > 0 ? (
+    ships.map((ship) => (
+      <div key={ship.id} className="ship-card">
+        <button className="delete-button">🗑</button>
+        <img
+          src="https://portosma.com.br/wp-content/uploads/2023/03/TRIPPLE-2.jpg"
+          alt={ship.name}
+          className="ship-image"
+        />
+        <p className="ship-status">{ship.status || "Ativo/Indo"}</p>
+        <p className="ship-date">{ship.date || "12/11/2024 12:00"}</p>
+        <button
+                  className="action-button"
+                  onClick={() => navigate('/viagem')}
+                >
+                  Nova viagem
+                  </button>
+        <button
+  className="action-button"
+  onClick={() => navigate('/edit-ship', { state: ship })}
+>
+  Editar navio
+</button>
+
+      </div>
+    ))
+  ) : (
+    <p>Carregando navios...</p>
+  )}
+</ul>
+
+        <button className="add-ship-button">Cadastrar nova embarcação</button>
+      </div>
+      <Footer />
     </>
   );
 };
