@@ -7,7 +7,13 @@ import './Ships.css';
 
 const Ships = () => {
   const [ships, setShips] = useState([]);
-  const [newShip, setNewShip] = useState({ name: '', type: '' });
+  const [newShip, setNewShip] = useState({
+    nome_navio: '',
+    tipo: '',
+    imo_number: '',
+    size: '',
+    cargo_capacity: '',
+  });
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -38,7 +44,7 @@ const Ships = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       setShips((prevShips) => [...prevShips, newShip]);
-      setNewShip({ name: '', type: '' });
+      setNewShip({ nome_navio: '', tipo: '', imo_number: '', size: '', cargo_capacity: '' });
       setShowForm(false);
     } catch (error) {
       console.error('Erro ao cadastrar navio', error);
@@ -68,9 +74,9 @@ const Ships = () => {
               <label>Nome do Navio</label>
               <input
                 type="text"
-                value={newShip.name}
+                value={newShip.nome_navio}
                 onChange={(e) =>
-                  setNewShip({ ...newShip, name: e.target.value })
+                  setNewShip({ ...newShip, nome_navio: e.target.value })
                 }
                 required
               />
@@ -79,11 +85,42 @@ const Ships = () => {
               <label>Tipo do Navio</label>
               <input
                 type="text"
-                value={newShip.type}
+                value={newShip.tipo}
                 onChange={(e) =>
-                  setNewShip({ ...newShip, type: e.target.value })
+                  setNewShip({ ...newShip, tipo: e.target.value })
                 }
                 required
+              />
+            </div>
+            <div>
+              <label>Número IMO</label>
+              <input
+                type="text"
+                value={newShip.imo_number}
+                onChange={(e) =>
+                  setNewShip({ ...newShip, imo_number: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div>
+              <label>Tamanho do Navio</label>
+              <input
+                type="text"
+                value={newShip.size}
+                onChange={(e) =>
+                  setNewShip({ ...newShip, size: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label>Capacidade de Carga</label>
+              <input
+                type="text"
+                value={newShip.cargo_capacity}
+                onChange={(e) =>
+                  setNewShip({ ...newShip, cargo_capacity: e.target.value })
+                }
               />
             </div>
             <button type="submit" className="login-button">
@@ -95,36 +132,38 @@ const Ships = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         <ul className="ships-grid">
-  {ships.length > 0 ? (
-    ships.map((ship) => (
-      <div key={ship.id} className="ship-card">
-        <button className="delete-button">🗑</button>
-        <img
-          src="https://portosma.com.br/wp-content/uploads/2023/03/TRIPPLE-2.jpg"
-          alt={ship.name}
-          className="ship-image"
-        />
-        <p className="ship-status">{ship.status || "Ativo/Indo"}</p>
-        <p className="ship-date">{ship.date || "12/11/2024 12:00"}</p>
-        <button
+          {ships.length > 0 ? (
+            ships.map((ship) => (
+              <div key={ship.id} className="ship-card">
+                <button className="delete-button">🗑</button>
+                <img
+                  src="https://portosma.com.br/wp-content/uploads/2023/03/TRIPPLE-2.jpg"
+                  alt={ship.nome_navio}
+                  className="ship-image"
+                />
+                <p className="ship-status">Status: {ship.status || "Ativo/Indo"}</p>
+                <p className="ship-date">Data: {ship.date || "12/11/2024 12:00"}</p>
+                <p className="ship-imo">IMO: {ship.imo_number}</p>
+                <p className="ship-size">Tamanho: {ship.size}</p>
+                <p className="ship-capacity">Capacidade: {ship.cargo_capacity}</p>
+                <button
                   className="action-button"
                   onClick={() => navigate('/viagem')}
                 >
                   Nova viagem
-                  </button>
-        <button
-  className="action-button"
-  onClick={() => navigate('/edit-ship', { state: ship })}
->
-  Editar navio
-</button>
-
-      </div>
-    ))
-  ) : (
-    <p>Carregando navios...</p>
-  )}
-</ul>
+                </button>
+                <button
+                  className="action-button"
+                  onClick={() => navigate('/edit-ship', { state: ship })}
+                >
+                  Editar navio
+                </button>
+              </div>
+            ))
+          ) : (
+            <p>Carregando navios...</p>
+          )}
+        </ul>
 
         <button className="add-ship-button">Cadastrar nova embarcação</button>
       </div>
