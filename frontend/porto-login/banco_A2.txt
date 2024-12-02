@@ -1,4 +1,4 @@
-CREATE DATABASE porto;
+""CREATE DATABASE porto;
 USE porto;
 
 CREATE TABLE users (
@@ -10,9 +10,9 @@ CREATE TABLE users (
 
 CREATE TABLE ships (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  nome_navio VARCHAR(255) NOT NULL,
+  tipo VARCHAR(100) NOT NULL,
   imo_number VARCHAR(50) NOT NULL UNIQUE,
-  type VARCHAR(100) NOT NULL,
   size VARCHAR(50),
   cargo_capacity VARCHAR(50),
   owner_id INT,
